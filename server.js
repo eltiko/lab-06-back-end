@@ -34,23 +34,23 @@ app.get('/weather', (request, response) =>{
     let forecast = weather.daily.data[i];
     // var myDate = new Date( 1540057361 * 1000);
     // document.write(myDate.toGMTString() + myDate.toLocaleString());
-    let temp = new Date((time) * 1000);
-    let tempString = temp.toUTCString();
     weatherData.push(new Weather(forecast.summary,forecast.time));
-
-  }
-  response.send(weatherData);
+    
+}
+response.send(weatherData);
 });
 
 function Weather (weather, time){
-  this.weather = weather;
+    this.weather = weather;
   this.time = time; 
-  // this.formatted_query = weatherData.data[0].daily;
-  // this.forecast = weatherData.data[0].summary;
-  // this.time = weatherData.data[0].time;
+    let temp = new Date((time) * 1000);
+    let tempString = temp.toUTCString();
+    // this.formatted_query = weatherData.data[0].daily;
+    // this.forecast = weatherData.data[0].summary;
+    // this.time = weatherData.data[0].time;
 }
 
 app.listen(PORT, () =>{
-  console.log(`listening on PORT ${PORT}`);
+    console.log(`listening on PORT ${PORT}`);
 });
 
