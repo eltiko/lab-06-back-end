@@ -25,6 +25,10 @@ function Location(city, geoData){
   this.latitude = geoData.results[0].geometry.location.lat;
   this.longitude = geoData.results[0].geometry.location.lng;
 }
+
+app.get('/weather', )
+
 app.listen(PORT, () =>{
   console.log(`listening on PORT ${PORT}`);
 });
+
