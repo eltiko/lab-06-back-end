@@ -37,7 +37,7 @@ function Weather (weather, weatherData){
   this.search_query = weather;
   this.formatted_query = weatherData.results[0].daily;
   this.forecast = weatherData.results[0].data.summary;
-  this.time - weatherData.results[0].data.time;
+  this.time = weatherData.results[0].data.time;
 }
 
 app.listen(PORT, () =>{
