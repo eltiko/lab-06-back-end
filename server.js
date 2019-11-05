@@ -30,9 +30,12 @@ function Location(city, geoData){
 app.get('/weather', (request, response) =>{
   const weather = require('./data/darksky.json');
   const weatherData = [];
-  for (let i=0; i<weather.daily.data.length; i++){
+  for (let i = 0; i < weather.daily.data.length; i++){
     let forecast = weather.daily.data[i];
+    var myDate = new Date( 1540057361 * 1000);
+    document.write(myDate.toGMTString() + "<br>" + myDate.toLocaleString());
     weatherData.push(new Weather(forecast.summary,forecast.time));
+
   }
   response.send(weatherData);
 });
