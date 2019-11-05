@@ -28,17 +28,20 @@ function Location(city, geoData){
 }
 
 app.get('/weather', (request, response) =>{
-  const weatherData = require('./data/darksky.json');
-  const weather = request.query.data;
-  const newWeatherData = new Weather (weather, weatherData);
-  response.send(newWeatherData);
+  const weather = require('./data/darksky.json');
+  const weatherData = [];
+  for (let i=0; i<weather.daily.data.length; i++){
+    let forecast = weather.daily.data[i]
+    weatherData.push(new Weather(forecast.summary, forecast.time));
+  }
+  response.send(WeatherData);
 });
 
-function Weather (location, weatherData){
-  this.search_query = location;
-  this.formatted_query = weatherData.data[0].daily;
-  this.forecast = weatherData.data[0].summary;
-  this.time = weatherData.data[0].time;
+function Weather (weather){
+  this.weather = weather;
+  // this.formatted_query = weatherData.data[0].daily;
+  // this.forecast = weatherData.data[0].summary;
+  // this.time = weatherData.data[0].time;
 }
 
 app.listen(PORT, () =>{
