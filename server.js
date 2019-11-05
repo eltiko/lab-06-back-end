@@ -31,13 +31,13 @@ app.get('/weather', (request, response) =>{
   const weather = require('./data/darksky.json');
   const weatherData = [];
   for (let i=0; i<weather.daily.data.length; i++){
-    let temp = new Forecast(data[i].summary, data[i].time)
-    weatherData.push(temp);
+    let forecast = weather.daily.data[i]
+    weatherData.push(new Weather(forecast.summary,forecast.time));
   }
   response.send(weatherData);
 });
 
-function Forecast (weather){
+function Weather (weather, time){
   this.weather = weather;
   // this.formatted_query = weatherData.data[0].daily;
   // this.forecast = weatherData.data[0].summary;
