@@ -2,6 +2,7 @@
 
 require('dotenv').config();
 const express = require('express');
+// eslint-disable-next-line no-unused-vars
 const cors = require('cors');
 
 const app = express();
@@ -33,8 +34,8 @@ app.get('/weather', (request, response) =>{
   response.send(newWeatherData);
 });
 
-function Weather (weather, weatherData){
-  this.search_query = weather;
+function Weather (location, weatherData){
+  this.search_query = location;
   this.formatted_query = weatherData.data[0].daily;
   this.forecast = weatherData.data[0].summary;
   this.time = weatherData.data[0].time;
