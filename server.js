@@ -32,8 +32,8 @@ app.get('/weather', (request, response) =>{
   const weatherData = [];
   for (let i = 0; i < weather.daily.data.length; i++){
     let forecast = weather.daily.data[i];
-    var myDate = new Date( 1540057361 * 1000);
-    document.write(myDate.toGMTString() + "<br>" + myDate.toLocaleString());
+    // var myDate = new Date( 1540057361 * 1000);
+    // document.write(myDate.toGMTString() + myDate.toLocaleString());
     weatherData.push(new Weather(forecast.summary,forecast.time));
 
   }
@@ -41,6 +41,8 @@ app.get('/weather', (request, response) =>{
 });
 
 function Weather (weather, time){
+  let temp = new Date((time) * 1000);
+  let tempString = temp.toUTCString();
   this.weather = weather;
   this.time = time; 
   // this.formatted_query = weatherData.data[0].daily;
