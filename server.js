@@ -30,19 +30,33 @@ function Location(city, geoData){
 app.get('/weather', (request, response) =>{
   const weather = require('./data/darksky.json');
   const weatherData = [];
+<<<<<<< HEAD
   for (let i=0; i<weather.daily.data.length; i++){
     let forecast = weather.daily.data[i]
     // let epochTime = (dailyData.time*1000);
     // let d = new Date(epochTime);
     // let time = d.toUTCString();
+=======
+  for (let i = 0; i < weather.daily.data.length; i++){
+    let forecast = weather.daily.data[i];
+    // var myDate = new Date( 1540057361 * 1000);
+    // document.write(myDate.toGMTString() + myDate.toLocaleString());
+>>>>>>> 36de042f83ae7d6aa2425943f3cdb2302af456c0
     weatherData.push(new Weather(forecast.summary,forecast.time));
+
   }
   response.send(weatherData);
 });
 
 function Weather (weather, time){
+  let temp = new Date((time) * 1000);
+  let tempString = temp.toUTCString();
   this.weather = weather;
+<<<<<<< HEAD
   this.time = time;
+=======
+  this.time = time; 
+>>>>>>> 36de042f83ae7d6aa2425943f3cdb2302af456c0
   // this.formatted_query = weatherData.data[0].daily;
   // this.forecast = weatherData.data[0].summary;
   // this.time = weatherData.data[0].time;
