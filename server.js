@@ -34,6 +34,8 @@ app.get('/weather', (request, response) =>{
     let forecast = weather.daily.data[i];
     // var myDate = new Date( 1540057361 * 1000);
     // document.write(myDate.toGMTString() + myDate.toLocaleString());
+    let temp = new Date((time) * 1000);
+    let tempString = temp.toUTCString();
     weatherData.push(new Weather(forecast.summary,forecast.time));
 
   }
@@ -41,8 +43,6 @@ app.get('/weather', (request, response) =>{
 });
 
 function Weather (weather, time){
-  let temp = new Date((time) * 1000);
-  let tempString = temp.toUTCString();
   this.weather = weather;
   this.time = time; 
   // this.formatted_query = weatherData.data[0].daily;
