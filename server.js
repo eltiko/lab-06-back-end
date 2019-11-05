@@ -34,7 +34,7 @@ app.get('/weather', (request, response) =>{
     let forecast = weather.daily.data[i]
     weatherData.push(new Weather(forecast.summary, forecast.time));
   }
-  response.send(WeatherData);
+  response.send(weatherData);
 });
 
 function Weather (weather){
