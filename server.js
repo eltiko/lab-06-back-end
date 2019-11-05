@@ -35,9 +35,9 @@ app.get('/weather', (request, response) =>{
 
 function Weather (weather, weatherData){
   this.search_query = weather;
-  this.formatted_query = weatherData.results[0].daily;
-  this.forecast = weatherData.results[0].data.summary;
-  this.time = weatherData.results[0].data.time;
+  this.formatted_query = weatherData.data[0].daily;
+  this.forecast = weatherData.data[0].summary;
+  this.time = weatherData.data[0].time;
 }
 
 app.listen(PORT, () =>{
